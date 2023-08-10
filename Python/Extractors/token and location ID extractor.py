@@ -1,5 +1,15 @@
 # Token and Location ID extractor
 
+"""
+PURPOSE: This program accepts a text file with a list of names and marketing sources.
+The names and marketing sources are provided as a URL, and extracting them 
+manually via copy-paste is tedious and time consuming. Essentially is a more
+robust version of the Marketing Source Extractor, as it needed to extract
+based on 2 symbols instead of just one.
+
+USAGE: Currently accepts .txt only.
+"""
+
 from pathlib import Path
 
 # accepts filepath as input to open .txt file for processing
@@ -8,6 +18,8 @@ print("Please ensure input.txt has the correct input AND that any")
 print("past results in output.txt have been saved elsewhere.")
 input("Then hit enter to continue.")
 
+#TODO Add file handling for multiple file extensions. Perhaps make it extension-
+#     agnostic for ease of use
 path_to_input = Path(__file__).parent.resolve() / 'input.txt'
 
 # intializing empty variables to be used later
@@ -25,6 +37,10 @@ with path_to_input.open(mode='r', encoding='utf-8') as props_file:
 
         # initializing the prop name to empty
         prop_name = ''
+
+        #TODO Perhaps turn the below into a module that the script can call.
+        #     Would help with allowing the user to input arbitrary symbols
+        #     they need the script to separate by.
 
         # for each of the words in the line
         for word in line_as_list:
